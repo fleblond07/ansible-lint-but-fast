@@ -1,0 +1,7 @@
+---
+- name: First task
+  ansible.builtin.debug:
+    msg: hello
+- name: Second task
+  ansible.builtin.debug:
+    msg: world

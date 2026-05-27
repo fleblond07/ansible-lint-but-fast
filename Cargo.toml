@@ -1,0 +1,33 @@
+[workspace]
+members = [
+    "crates/ansible-lint",
+    "crates/ansible-lint-core",
+]
+resolver = "2"
+
+[workspace.dependencies]
+# Core
+anyhow = "1"
+thiserror = "2"
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+serde_json = "1"
+yaml-rust2 = "0.10"
+
+# CLI
+clap = { version = "4", features = ["derive", "env"] }
+
+# File system
+walkdir = "2"
+globset = "0.4"
+ignore = "0.4"
+
+# Text / regex
+regex = "1"
+owo-colors = "4"
+
+# Data structures
+indexmap = { version = "2", features = ["serde"] }
+
+# Config
+toml = "0.8"

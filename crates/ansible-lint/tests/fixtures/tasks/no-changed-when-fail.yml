@@ -1,0 +1,3 @@
+---
+- name: Run command without changed_when
+  ansible.builtin.command: echo hello

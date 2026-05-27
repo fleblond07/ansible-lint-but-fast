@@ -1,0 +1,4 @@
+---
+- name: Run command with changed_when
+  ansible.builtin.command: echo hello
+  changed_when: false

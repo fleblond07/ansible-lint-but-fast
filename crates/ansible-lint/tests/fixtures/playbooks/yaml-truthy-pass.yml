@@ -1,0 +1,9 @@
+---
+- name: Test play
+  hosts: all
+  tasks:
+    - name: Enable service
+      ansible.builtin.service:
+        name: nginx
+        enabled: true
+        state: started

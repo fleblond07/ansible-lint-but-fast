@@ -1,0 +1,6 @@
+---
+- ansible.builtin.debug:
+    msg: This task has no name
+- name: This task has a name
+  ansible.builtin.debug:
+    msg: hello

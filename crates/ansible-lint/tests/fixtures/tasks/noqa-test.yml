@@ -1,0 +1,9 @@
+---
+- name: Task with noqa
+  ansible.builtin.debug:
+    msg: hi
+  when: "{{ my_var }}"  # noqa: no-jinja-when
+- name: Truthy suppressed inline
+  ansible.builtin.service:
+    name: nginx
+    enabled: yes  # noqa

@@ -1,0 +1,13 @@
+pub mod brackets;
+pub mod colons;
+pub mod commas;
+pub mod comments;
+pub mod document_start;
+pub mod empty_lines;
+pub mod indentation;
+pub mod key_duplicates;
+pub mod line_length;
+pub mod new_line_at_eof;
+pub mod octal_values;
+pub mod trailing_spaces;
+pub mod truthy;
