@@ -6,7 +6,7 @@ description = "A linting tool for Ansible playbooks, roles, and collections (Rus
 license = "MIT"
 
 [[bin]]
-name = "ansible-lint"
+name = "ansible-rust-lint"
 path = "src/main.rs"
 
 [dependencies]

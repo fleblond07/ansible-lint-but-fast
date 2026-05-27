@@ -1,6 +1,6 @@
-# ansible-lint-rust
+# ansible-rust-lint-rust
 
-A Rust reimplementation of [ansible-lint](https://github.com/ansible/ansible-lint) — CLI-compatible drop-in replacement for linting Ansible playbooks, task files, roles, and collections.
+A Rust reimplementation of [ansible-rust-lint](https://github.com/ansible/ansible-rust-lint) — CLI-compatible drop-in replacement for linting Ansible playbooks, task files, roles, and collections.
 
 ## Features
 
@@ -8,58 +8,58 @@ A Rust reimplementation of [ansible-lint](https://github.com/ansible/ansible-lin
 - 44 built-in rules across all upstream profiles
 - 6 output formats: `brief`, `full`, `json`, `sarif`, `codeclimate`, `pep8`
 - Auto-fix support (`--fix`) for formatting violations
-- Inline `# noqa` suppression and `.ansible-lint-ignore` file support
-- Config loading from `.ansible-lint`, `.ansible-lint.yml`, and `.config/ansible-lint.yml`
+- Inline `# noqa` suppression and `.ansible-rust-lint-ignore` file support
+- Config loading from `.ansible-rust-lint`, `.ansible-rust-lint.yml`, and `.config/ansible-rust-lint.yml`
 - Profile-based rule filtering (min → basic → moderate → safety → shared → production)
 
 ## Installation
 
 ```sh
-cargo install --path crates/ansible-lint
+cargo install --path crates/ansible-rust-lint
 ```
 
 Or build from source:
 
 ```sh
 cargo build --release
-# Binary is at target/release/ansible-lint
+# Binary is at target/release/ansible-rust-lint
 ```
 
 ## Usage
 
 ```sh
 # Lint the current directory
-ansible-lint
+ansible-rust-lint
 
 # Lint specific files or directories
-ansible-lint playbooks/ roles/myrole
+ansible-rust-lint playbooks/ roles/myrole
 
 # Use a specific profile
-ansible-lint --profile moderate
+ansible-rust-lint --profile moderate
 
 # Skip specific rules
-ansible-lint --skip-list yaml[truthy],name[missing]
+ansible-rust-lint --skip-list yaml[truthy],name[missing]
 
 # Output as JSON
-ansible-lint --format json
+ansible-rust-lint --format json
 
 # Treat warnings as errors
-ansible-lint --strict
+ansible-rust-lint --strict
 
 # Auto-fix all fixable violations
-ansible-lint --fix
+ansible-rust-lint --fix
 
 # Auto-fix only specific rules
-ansible-lint --fix yaml[truthy],yaml[trailing-spaces]
+ansible-rust-lint --fix yaml[truthy],yaml[trailing-spaces]
 
 # List all rules
-ansible-lint --list-rules
+ansible-rust-lint --list-rules
 
 # List available profiles
-ansible-lint --list-profiles
+ansible-rust-lint --list-profiles
 
 # Generate an ignore file from current violations
-ansible-lint --generate-ignore > .ansible-lint-ignore
+ansible-rust-lint --generate-ignore > .ansible-rust-lint-ignore
 ```
 
 ## Rules
@@ -135,13 +135,13 @@ Profiles are cumulative — each includes all rules from the profiles below it.
 
 ## Configuration
 
-ansible-lint-rust reads configuration from (searched upward from the working directory):
+ansible-rust-lint-rust reads configuration from (searched upward from the working directory):
 
-- `.ansible-lint`
-- `.ansible-lint.yml` / `.ansible-lint.yaml`
-- `.config/ansible-lint.yml` / `.config/ansible-lint.yaml`
+- `.ansible-rust-lint`
+- `.ansible-rust-lint.yml` / `.ansible-rust-lint.yaml`
+- `.config/ansible-rust-lint.yml` / `.config/ansible-rust-lint.yaml`
 
-Example `.ansible-lint.yml`:
+Example `.ansible-rust-lint.yml`:
 
 ```yaml
 profile: moderate
@@ -168,7 +168,7 @@ Add `# noqa` to suppress all rules on a line, or `# noqa: rule-id` for a specifi
   ignore_errors: true  # noqa: ignore-errors
 ```
 
-### .ansible-lint-ignore file
+### .ansible-rust-lint-ignore file
 
 To suppress specific rule/file combinations:
 
@@ -203,8 +203,8 @@ cargo llvm-cov --workspace
 
 ```
 crates/
-  ansible-lint/          # Binary crate (CLI entry point)
-  ansible-lint-core/     # Library crate
+  ansible-rust-lint/          # Binary crate (CLI entry point)
+  ansible-rust-lint-core/     # Library crate
     src/
       config.rs          # Config loading and merging
       discovery.rs       # File discovery and classification

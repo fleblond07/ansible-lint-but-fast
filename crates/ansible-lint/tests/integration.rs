@@ -8,7 +8,7 @@ fn binary_path() -> PathBuf {
     if path.ends_with("deps") {
         path.pop();
     }
-    path.join("ansible-lint")
+    path.join("ansible-rust-lint")
 }
 
 fn fixtures_dir() -> PathBuf {

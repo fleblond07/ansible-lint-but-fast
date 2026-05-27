@@ -15,7 +15,7 @@ use ansible_lint_core::{
 
 #[derive(Parser)]
 #[command(
-    name = "ansible-lint",
+    name = "ansible-rust-lint",
     version = env!("CARGO_PKG_VERSION"),
     about = "A linting tool for Ansible playbooks, roles, and collections",
     long_about = None,
