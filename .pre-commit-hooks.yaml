@@ -1,0 +1,7 @@
+- id: ansible-rust-lint
+  name: ansible-rust-lint
+  description: Lint Ansible YAML files with the Rust implementation of ansible-lint.
+  entry: ansible-rust-lint
+  language: rust
+  types: [yaml]
+  args: [--strict]

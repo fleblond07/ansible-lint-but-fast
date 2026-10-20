@@ -27,6 +27,54 @@ cargo build --release
 
 ## Usage
 
+### Git hooks with prek
+
+[prek](https://prek.j178.dev/) can build and run this repository's
+`ansible-rust-lint` hook. Add the following to your Ansible project's
+`.pre-commit-config.yaml`:
+
+```yaml
+repos:
+  - repo: https://github.com/gruentee/ansible-lint-but-fast
+    rev: <commit-or-tag-containing-the-hook>
+    hooks:
+      - id: ansible-rust-lint
+        exclude: ^\.pre-commit-config\.yaml$
+```
+
+Replace `rev` with a commit SHA or release tag that contains
+`.pre-commit-hooks.yaml`. Then install and run the hook:
+
+```sh
+prek install
+prek run --all-files
+```
+
+Prek builds the binary from the Cargo workspace in an isolated hook environment;
+you do not need to install `ansible-rust-lint` separately. The first run needs
+access to the repository, Cargo dependencies, and a Rust toolchain (which prek
+can provision).
+
+The hook checks only the selected `.yml` and `.yaml` files, not the whole project,
+and skips runs without matching files. It passes `--strict` by default so that
+warnings also block a commit. The CLI's normal configuration discovery still
+applies: use `.ansible-lint`, `.ansible-lint.yml`, `.ansible-lint.yaml`, or
+`.config/ansible-lint.yml` / `.config/ansible-lint.yaml` in the consuming project.
+
+To change options, override `args` on the hook, for example:
+
+```yaml
+      - id: ansible-rust-lint
+        args: [--strict, --profile, moderate]
+```
+
+Overriding `args` replaces the defaults; use `args: []` if warnings should not
+block a commit. Because the hook matches YAML generally, the example excludes
+the hook configuration itself; adjust `files` / `exclude` for other non-Ansible
+YAML in your project.
+
+### Command line
+
 ```sh
 # Lint the current directory
 ansible-rust-lint
